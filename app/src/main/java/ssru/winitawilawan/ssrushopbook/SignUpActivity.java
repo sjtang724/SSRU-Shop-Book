@@ -20,7 +20,7 @@ public class SignUpActivity extends AppCompatActivity {
     //Explicit ประกาศตัวแปร
     private EditText nameEditText, surnamEditText, userEditText, passwordEditText;
     private String nameString, surnameString, userString, passwordString;
-    private static final String urlUpload = "http://swiftcodingthai.com/ssru/add_user_nam.php";
+    private static final String urlUpload = "http://swiftcodingthai.com/ssru/add_user_master.php";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,7 +69,7 @@ public class SignUpActivity extends AppCompatActivity {
                 .build();
 
         Request.Builder builder = new Request.Builder();
-        Request request = builder.url("http://swiftcodingthai.com/ssru/add_user_nam.php").post(requestBody).build();
+        Request request = builder.url(urlUpload).post(requestBody).build();
         Call call = okHttpClient.newCall(request);
         call.enqueue(new Callback() {
             @Override
