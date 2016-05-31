@@ -22,7 +22,8 @@
             android:text="Sign IN"
             android:id="@+id/button"
             android:layout_gravity="bottom"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            android:onClick="clickSignIn" />
 
         <Button
             android:layout_width="0dp"
