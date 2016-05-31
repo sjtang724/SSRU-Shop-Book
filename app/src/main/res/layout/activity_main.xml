@@ -7,12 +7,8 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="ssru.winitawilawan.ssrushopbook.MainActivity">
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!" />
+    tools:context="ssru.winitawilawan.ssrushopbook.MainActivity"
+    android:background="@drawable/wall11">
 
     <LinearLayout
         android:orientation="horizontal"
@@ -36,5 +32,42 @@
             android:layout_gravity="bottom"
             android:layout_weight="1"
             android:onClick="clickSignUpMain" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="40dp"
+        android:padding="20dp"
+        android:gravity="center_horizontal"
+        android:background="#50e4f2f4">
+
+        <ImageView
+            android:layout_width="@dimen/icon"
+            android:layout_height="@dimen/icon"
+            android:id="@+id/imageView"
+            android:src="@drawable/ssru_new"
+            android:layout_marginTop="5dp" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/editText5"
+            android:hint="User "
+            android:inputType="text"
+            android:textColor="@color/text"
+            android:textColorHint="@color/text" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/editText6"
+            android:hint="Password"
+            android:inputType="textPassword|text"
+            android:layout_gravity="center_horizontal"
+            android:textColor="@color/text"
+            android:textColorHint="@color/text" />
     </LinearLayout>
 </RelativeLayout>
