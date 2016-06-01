@@ -66,6 +66,8 @@ public class MainActivity extends AppCompatActivity {
         //Check Space
         if (userString.equals("") || passwordString.equals("")) {
 
+
+
             MyAlert myAlert = new MyAlert();
             myAlert.myDialog(this, "มีช่องว่าง", "กรุณากรอกทุกช่อง");
         } else {
@@ -97,8 +99,15 @@ public class MainActivity extends AppCompatActivity {
 
             if (passwordString.equals(loginString[4])) {
                 //Password True
+
+                Intent intent = new Intent(MainActivity.this, ProductListView.class);
+                intent.putExtra("Login", loginString);
+                startActivity(intent);
+
                 Toast.makeText(this, "ยินดีต้อนรับ " + loginString[1] + " " + loginString[2],
                         Toast.LENGTH_SHORT).show();
+
+                finish();
             } else {
                 //Password False
                 MyAlert myAlert = new MyAlert();
