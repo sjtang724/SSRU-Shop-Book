@@ -1,8 +1,14 @@
 package ssru.winitawilawan.ssrushopbook;
 
-import android.support.v7.app.AppCompatActivity;
+import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 import com.squareup.okhttp.Call;
 import com.squareup.okhttp.Callback;
 import com.squareup.okhttp.FormEncodingBuilder;
@@ -13,19 +19,20 @@ import com.squareup.okhttp.Response;
 
 import java.io.IOException;
 
-public class ReadPDF extends AppCompatActivity {
-
+public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
     //Explicit
-
-    private String nameBookString, priceBookString, urlPDFString,moneyString;
+    private String nameBookString, priceBookString, urlPDFString, moneyString;
     private String[] loginStrings;
-    private String urlEdit = "http://swiftcodingthai.com/ssru/edit_money_nam.php";
+    private String urlEdit = "http://swiftcodingthai.com/ssru/edit_money_master.php";
+    private GoogleMap mMap;
+    private double centerLat = 13.775943;
+    private double centerLng = 100.508242;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_read_pdf);
+        setContentView(R.layout.my_layout);
 
         //Get Value From Intent
         nameBookString = getIntent().getStringExtra("NameBook");
@@ -36,8 +43,11 @@ public class ReadPDF extends AppCompatActivity {
 
         //updateAccount
         updateAccount();
-
-    }//Main Method
+        // Obtain the SupportMapFragment and get notified when the map is ready to be used.
+        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
+                .findFragmentById(R.id.map);
+        mapFragment.getMapAsync(this);
+    } // main method
 
     private void updateAccount() {
 
@@ -65,7 +75,25 @@ public class ReadPDF extends AppCompatActivity {
 
             }
         });
-    }//updateAccount
+    }   // updateAccount
+
+    @Override
+    public void onMapReady(GoogleMap googleMap) {
+        mMap = googleMap;
+        LatLng latLng = new LatLng(centerLat, centerLng);
+        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 16));
+
+        mMap.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
+            @Override
+            public void onMapClick(LatLng latLng) {
+
+                mMap.clear();
+
+                mMap.addMarker(new MarkerOptions()
+                        .position(latLng));
 
 
-}//Main Class
+            }
+        });
+    } //onMap
+} //main class
